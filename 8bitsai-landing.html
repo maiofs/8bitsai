@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8bits AI — Meet Elli</title>
+<style>
+:root{--bg:#fafafa;--surface:#fff;--accent:#ff6b35;--accent2:#ff9f43;--text:#1a1a2e;--muted:#666;--border:#e8e8ec;--green:#22c55e;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,250,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-size:1.4rem;font-weight:800;letter-spacing:-1px;color:var(--text)}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:32px}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.9rem;transition:color 0.2s}
+.nav-links a:hover{color:var(--accent)}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding-top:80px;position:relative}
+.hero::before{content:'';position:absolute;top:20%;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(255,107,53,0.1),transparent 70%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);padding:8px 20px;border-radius:50px;font-size:0.85rem;color:var(--muted);margin-bottom:32px}
+.hero-badge span{width:8px;height:8px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;line-height:1.1;margin-bottom:24px;letter-spacing:-2px}
+.hero h1 span{color:var(--accent)}
+.hero p{font-size:clamp(1rem,2vw,1.25rem);color:var(--muted);max-width:550px;margin:0 auto 40px}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;padding:14px 32px;border-radius:12px;text-decoration:none;font-weight:600;transition:transform 0.2s,box-shadow 0.2s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(255,107,53,0.25)}
+.btn-secondary{background:var(--surface);color:var(--text);padding:14px 32px;border-radius:12px;text-decoration:none;font-weight:600;border:1px solid var(--border);transition:all 0.2s}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Sections */
+section{padding:100px 0}
+.section-header{text-align:center;margin-bottom:64px}
+.section-header h2{font-size:2.2rem;font-weight:700;margin-bottom:12px}
+.section-header p{color:var(--muted);font-size:1.1rem;max-width:500px;margin:0 auto}
+
+/* Features */
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:768px){.features-grid{grid-template-columns:1fr}}
+.feat-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:32px;text-align:center;transition:all 0.3s}
+.feat-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.06)}
+.feat-card .emoji{font-size:2.5rem;margin-bottom:16px}
+.feat-card h3{font-size:1.1rem;margin-bottom:8px}
+.feat-card p{color:var(--muted);font-size:0.9rem;line-height:1.6}
+
+/* Privacy */
+.privacy-block{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:48px;display:flex;gap:40px;align-items:center;flex-wrap:wrap}
+.privacy-text{flex:1;min-width:280px}
+.privacy-text h3{font-size:1.5rem;margin-bottom:12px}
+.privacy-text p{color:var(--muted);line-height:1.7}
+.privacy-icon{font-size:4rem}
+
+/* Demo */
+.demo-block{background:var(--text);color:#fff;border-radius:24px;padding:64px 32px;text-align:center;position:relative;overflow:hidden}
+.demo-block::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,107,53,0.12),transparent 60%)}
+.demo-block h2{position:relative;font-size:2rem;margin-bottom:12px}
+.demo-block p{position:relative;color:rgba(255,255,255,0.6);max-width:500px;margin:0 auto 32px}
+.wave{display:flex;align-items:center;justify-content:center;gap:4px;height:60px;margin-bottom:16px;position:relative}
+.wave span{width:4px;background:var(--accent);border-radius:2px;animation:wave 1.2s ease infinite}
+.wave span:nth-child(1){height:20%;animation-delay:0s}
+.wave span:nth-child(2){height:40%;animation-delay:.1s}
+.wave span:nth-child(3){height:60%;animation-delay:.2s}
+.wave span:nth-child(4){height:80%;animation-delay:.3s}
+.wave span:nth-child(5){height:100%;animation-delay:.4s}
+.wave span:nth-child(6){height:80%;animation-delay:.5s}
+.wave span:nth-child(7){height:60%;animation-delay:.6s}
+.wave span:nth-child(8){height:40%;animation-delay:.7s}
+.wave span:nth-child(9){height:20%;animation-delay:.8s}
+@keyframes wave{0%,100%{transform:scaleY(.5)}50%{transform:scaleY(1)}}
+
+/* Footer */
+footer{padding:60px 0 40px;text-align:center;border-top:1px solid var(--border)}
+footer .logo{font-size:1.5rem;margin-bottom:16px;display:inline-block}
+footer p{color:var(--muted);font-size:0.9rem}
+footer .links{display:flex;gap:24px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+footer .links a{color:var(--muted);text-decoration:none;font-size:0.85rem;transition:color 0.2s}
+footer .links a:hover{color:var(--accent)}
+</style>
+<base target="_blank">
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <div class="logo">8bits<span>AI</span></div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#demo">Demo</a>
+      <a href="https://maya-ai.tech">Maya AI</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge"><span></span> Powered by Maya AI · Patent Pending</div>
+    <h1>Say Hello to <span>Elli</span></h1>
+    <p>The first ambient voice assistant that actually understands you. No wake-words. No cloud eavesdropping. Just talk.</p>
+    <div class="hero-btns">
+      <a href="#features" class="btn-primary">Explore Features</a>
+      <a href="#demo" class="btn-secondary">See Demo</a>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="container">
+    <div class="section-header">
+      <h2>Why Elli Is Different</h2>
+      <p>Built on the Maya AI WIA engine — real intent detection</p>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card">
+        <div class="emoji">🎙️</div>
+        <h3>No Wake-Word</h3>
+        <p>Elli listens contextually. She knows when you're talking to her — not to someone else in the room.</p>
+      </div>
+      <div class="feat-card">
+        <div class="emoji">🔒</div>
+        <h3>Edge-First Privacy</h3>
+        <p>Your voice never leaves the room. All biometric processing happens locally on your device.</p>
+      </div>
+      <div class="feat-card">
+        <div class="emoji">👤</div>
+        <h3>Knows You</h3>
+        <p>Face and voice biometrics let Elli recognize who is speaking and personalize every response.</p>
+      </div>
+      <div class="feat-card">
+        <div class="emoji">⚡</div>
+        <h3>Sub-200ms Latency</h3>
+        <p>From speech to response in under 200 milliseconds. It feels instant, because it is.</p>
+      </div>
+      <div class="feat-card">
+        <div class="emoji">🏠</div>
+        <h3>Multi-Room</h3>
+        <p>Seamless handoff between rooms. Start in the kitchen, continue in the office without missing a word.</p>
+      </div>
+      <div class="feat-card">
+        <div class="emoji">🧠</div>
+        <h3>Always Learning</h3>
+        <p>Elli adapts to your routines, vocabulary, and preferences over time. She gets better every day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="privacy">
+  <div class="container">
+    <div class="privacy-block">
+      <div class="privacy-text">
+        <h3>Your Home, Your Data</h3>
+        <p>Elli runs entirely on local hardware. No audio is sent to the cloud. No third-party access. No wake-word recording. Your conversations stay in your walls — where they belong. Powered by the 7F800000 compute cluster only when you explicitly choose cloud-enhanced reasoning.</p>
+      </div>
+      <div class="privacy-icon">🛡️</div>
+    </div>
+  </div>
+</section>
+
+<section id="demo">
+  <div class="container">
+    <div class="demo-block">
+      <h2>Hear Elli Think</h2>
+      <p>Real-time voice waveform processed entirely on-device through the WIA engine.</p>
+      <div class="wave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <p style="font-size:0.85rem;color:rgba(255,255,255,0.4)">Powered by Maya AI · Patent Pending · WIA Engine v0.9</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="logo">8bits<span>AI</span></div>
+    <p>Ambient Voice Assistant · A Maya AI Company · Wrocław, Poland</p>
+    <div class="links">
+      <a href="https://maya-ai.tech">maya-ai.tech</a>
+      <a href="https://7f800000.com">7f800000.com</a>
+      <a href="https://mayabrainstorm.com">mayabrainstorm.com</a>
+    </div>
+    <p style="margin-top:32px;font-size:0.8rem;color:var(--muted)">© 2026 8bits AI. All rights reserved. Patent pending.</p>
+  </div>
+</footer>
+
+</body>
+</html>
